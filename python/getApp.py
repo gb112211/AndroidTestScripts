@@ -10,7 +10,7 @@ PATH = lambda p: os.path.abspath(p)
 def get_current_package_name():
     pattern = re.compile(r"[a-zA-Z0-9\.]+/.[a-zA-Z0-9\.]+")
     os.popen("adb wait-for-device")
-    out = os.popen("adb shell dumpsys input | findstr FocusedApplication").read()
+    out = os.popen("adb shell dumpsys window w | " + find_util + " \/ | " + find_util + " name=").read()
     package_name = pattern.findall(out)[0].split("/")[0]
 
     return package_name

@@ -1,13 +1,14 @@
 #!/usr/bin/python
+#!coding=utf-8
 
 import os
 import platform
 import re
 import sys
 
-PATH = lambda p: os.path.abspath(
-    os.path.join(os.path.dirname(__file__), p)
-)
+#获取当前应用的包名，保存至当前目录下的PackageName.txt文件中
+
+PATH = lambda p: os.path.abspath(p)
 
 system = platform.system()
 if system is "Windows":
@@ -19,7 +20,7 @@ pattern = re.compile(r"[a-zA-Z0-9\.]+/.[a-zA-Z0-9\.]+")
 
 def get_package_name():
     os.popen("adb wait-for-device")
-    out = os.popen("adb shell dumpsys input | " + find_util + " FocusedApplication").read()
+    out = os.popen("adb shell dumpsys window w | " + find_util + " \/ | " + find_util + " name=").read()
     package_name = pattern.findall(out)[0].split("/")[0]
 
     return package_name

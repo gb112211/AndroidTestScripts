@@ -1,6 +1,10 @@
+#!coding=utf-8
+
 import os
 import tempfile
 import re
+
+#使用aapt获取设备上当前应用的apk信息，保存至当前目录下的PackageInfo.txt中
 
 tempFile = tempfile.gettempdir()
 
@@ -16,7 +20,7 @@ def get_aapt():
 def get_current_package_name():
     pattern = re.compile(r"[a-zA-Z0-9\.]+/.[a-zA-Z0-9\.]+")
     os.popen("adb wait-for-device")
-    out = os.popen("adb shell dumpsys input | findstr FocusedApplication").read()
+    out = os.popen("adb shell dumpsys window w | findstr \/ | findstr name=").read()
     package_name = pattern.findall(out)[0].split("/")[0]
 
     return package_name

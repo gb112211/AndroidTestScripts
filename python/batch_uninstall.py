@@ -1,7 +1,10 @@
 #!/usr/bin/python
+#!coding=utf-8
 
 import os
 import sys
+
+#卸载手机上的第三方应用
 
 def uninstall():
     os.popen("adb wait-for-device")
