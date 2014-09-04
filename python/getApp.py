@@ -1,11 +1,19 @@
-#!coding=utf-8
+#!/usr/bin/python
+#coding=utf-8
 
 import os
 import re
+import platform
 
 #打开手机上的第三方应用，运行脚本，会将该应用对应的apk复制到本地的Apps文件夹下
 
 PATH = lambda p: os.path.abspath(p)
+
+system = platform.system()
+if system is "Windows":
+    find_util = "findstr"
+else:
+    find_util = "grep"
 
 def get_current_package_name():
     pattern = re.compile(r"[a-zA-Z0-9\.]+/.[a-zA-Z0-9\.]+")
