@@ -27,16 +27,14 @@ def get_current_package_name():
 
 def get_match_apk(package_name):
     list = []
-    for packages in os.popen("adb shell pm list packages -f " + package_name).readlines():
+    for packages in os.popen("adb shell pm list packages -f %s" %package_name).readlines():
         list.append(packages.split(":")[-1].split("=")[0])
     apk_name = list[0].split("/")[-1]
-    os.popen("adb pull " + list[0] + " " + tempFile)
+    os.popen("adb pull %s %s" %(list[0], tempFile))
 
     return tempFile + "\\" + apk_name
 
 if __name__ == "__main__":
     os.popen(get_aapt() + \
-             " dump badging " + \
-             get_match_apk(get_current_package_name()) + \
-             " > PackageInfo.txt")
-    os.popen("del " + tempFile + "\\*.apk")
+             " dump badging %s > PackageInfo.txt" %get_match_apk(get_current_package_name()))
+    os.popen("del %s\\*.apk" % tempFile)

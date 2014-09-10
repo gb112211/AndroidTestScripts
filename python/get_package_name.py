@@ -20,7 +20,7 @@ pattern = re.compile(r"[a-zA-Z0-9\.]+/.[a-zA-Z0-9\.]+")
 
 def get_package_name():
     os.popen("adb wait-for-device")
-    out = os.popen("adb shell dumpsys window w | " + find_util + " \/ | " + find_util + " name=").read()
+    out = os.popen("adb shell dumpsys window w | %s \/ | %s name=" %(find_util, find_util)).read()
     package_name = pattern.findall(out)[0].split("/")[0]
 
     return package_name

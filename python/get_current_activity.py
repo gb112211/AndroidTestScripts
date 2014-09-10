@@ -20,7 +20,7 @@ pattern = re.compile(r"[a-zA-Z0-9\.]+/.[a-zA-Z0-9\.]+")
 
 def get_activity():
     os.popen("adb wait-for-device")
-    out = os.popen("adb shell dumpsys window w | " + find_util + " \/ | " + find_util + " name=").read()
+    out = os.popen("adb shell dumpsys window w | %s \/ | %s name=" %(find_util, find_util)).read()
     return pattern.findall(out)[0]
 
 
