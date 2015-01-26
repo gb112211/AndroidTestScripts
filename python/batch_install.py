@@ -6,12 +6,12 @@ Created on 2015年1月26日
 @author: xuxu
 '''
 
-#需要在脚本所在目录AndroidAdb目录下有个AndroidAdb.exe程序，该adb可以支持安装以中文命名的apk
-#需要将apk文件放在脚本所在目录下的Apps目录下
-
 import os
 import time
 import sys
+
+#需要在脚本所在目录AndroidAdb目录下有个AndroidAdb.exe程序，该adb可以支持安装以中文命名的apk
+#需要将apk文件放在脚本所在目录下的Apps目录下
 
 #检查AndroidAdb.exe
 def check_adb():

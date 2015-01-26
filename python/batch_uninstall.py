@@ -7,9 +7,9 @@ Created on 2015年1月26日
 @author: xuxu
 '''
 
-#批量卸载设备上的应用
-
 import os
+
+#批量卸载设备上的应用
 
 def uninstall():
     os.popen("adb wait-for-device")

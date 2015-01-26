@@ -7,11 +7,11 @@ Created on 2015年1月26日
 @author: xuxu
 '''
 
-#截取当前屏幕，截屏文件保存至当前目录下的screen文件夹中
-
 import os
 
 from scriptUtils import utils
+
+#截取当前屏幕，截屏文件保存至当前目录下的screen文件夹中
 
 PATH = lambda p: os.path.abspath(p)
 
