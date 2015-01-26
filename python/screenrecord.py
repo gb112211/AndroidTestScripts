@@ -31,7 +31,6 @@ def record():
     if not os.path.isdir("%s/video" %PATH(os.getcwd())):
         os.makedirs(path)
     
-    utils.adb("pull /data/local/tmp/video.mp4 %s" %PATH("%s/video" %PATH(os.getcwd()))).wait()
     utils.adb("pull /data/local/tmp/video.mp4 %s"  %PATH("%s/%s.mp4" %(path, utils.timestamp()))).wait()
         
 if __name__ == "__main__":

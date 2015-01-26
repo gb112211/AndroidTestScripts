@@ -28,4 +28,5 @@ if __name__ == "__main__":
         os.makedirs(path)
 
     get_match_apk(utils.get_current_package_name(), path)
+    print "Completed"
     
