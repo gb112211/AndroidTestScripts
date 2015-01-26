@@ -11,7 +11,7 @@ import os
 
 from scriptUtils import utils
 
-#打开手机上的第三方应用，运行脚本，会将该应用对应的apk复制到本地的App文件夹下
+#打开手机上的应用（包括系统应用），运行脚本，会将该应用对应的apk复制到本地的App文件夹下
 
 PATH = lambda p: os.path.abspath(p)
 

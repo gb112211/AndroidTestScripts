@@ -6,6 +6,9 @@ Created on 2015年1月26日
 
 @author: xuxu
 '''
+
+#批量卸载设备上的应用
+
 import os
 
 def uninstall():
