@@ -1,38 +1,31 @@
-#!/usr/bin/python
-#coding=utf-8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+'''
+Created on 2015年1月26日
+
+@author: xuxu
+'''
 
 import os
-import re
-import platform
 
-#打开手机应用，运行脚本，会将该应用对应的apk复制到本地的Apps文件夹下
+from scriptUtils import utils
+
+#打开手机上的第三方应用，运行脚本，会将该应用对应的apk复制到本地的App文件夹下
 
 PATH = lambda p: os.path.abspath(p)
 
-system = platform.system()
-if system is "Windows":
-    find_util = "findstr"
-else:
-    find_util = "grep"
-
-def get_current_package_name():
-    pattern = re.compile(r"[a-zA-Z0-9\.]+/.[a-zA-Z0-9\.]+")
-    os.popen("adb wait-for-device")
-    out = os.popen("adb shell dumpsys window w | %s \/ | %s name=" %(find_util, find_util)).read()
-    package_name = pattern.findall(out)[0].split("/")[0]
-
-    return package_name
-
 def get_match_apk(package_name, path):
     list = []
-    for packages in os.popen("adb shell pm list packages -f %s" %package_name).readlines():
+    for packages in utils.shell("pm list packages -f %s" %package_name).stdout.readlines():
         list.append(packages.split(":")[-1].split("=")[0])
-    apk_name = list[0].split("/")[-1]
-    os.popen("adb pull %s %s" %(list[0], path))
+#     apk_name = list[0].split("/")[-1]
+    utils.adb("pull %s %s" %(list[0], path)).wait()
 
 if __name__ == "__main__":
-    path = PATH(os.getcwd() + "/Apps")
-    if not os.path.isdir(PATH(os.getcwd() + "/Apps")):
+    path = PATH("%s/App" %os.getcwd())
+    if not os.path.isdir("%s/App" %PATH(os.getcwd())):
         os.makedirs(path)
 
-    get_match_apk(get_current_package_name(), path)
+    get_match_apk(utils.get_current_package_name(), path)
+    

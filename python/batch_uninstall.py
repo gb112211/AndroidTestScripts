@@ -1,10 +1,12 @@
-#!/usr/bin/python
-#coding=utf-8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
+'''
+Created on 2015年1月26日
+
+@author: xuxu
+'''
 import os
-import sys
-
-#卸载手机上的第三方应用
 
 def uninstall():
     os.popen("adb wait-for-device")

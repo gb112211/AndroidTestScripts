@@ -1,31 +1,23 @@
-#!/usr/bin/python
-#coding=utf-8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+'''
+Created on 2015年1月26日
+
+@author: xuxu
+'''
 
 import os
-import platform
-import re
 import sys
 
-#获取设备当前界面的activity,保存至当前目录下的CurrentActivity.txt文件中
+from scriptUtils import utils
 
 PATH = lambda p: os.path.abspath(p)
 
-system = platform.system()
-if system is "Windows":
-    find_util = "findstr"
-else:
-    find_util = "grep"
-
-pattern = re.compile(r"[a-zA-Z0-9\.]+/.[a-zA-Z0-9\.]+")
-
-def get_activity():
-    os.popen("adb wait-for-device")
-    out = os.popen("adb shell dumpsys window w | %s \/ | %s name=" %(find_util, find_util)).read()
-    return pattern.findall(out)[0]
-
 
 if __name__ == "__main__":
-    f = open(PATH(os.getcwd() + "/CurrentActivity.txt"), "w")
-    f.write("Activity: \n" + get_activity())
+    f = open(PATH("%s/CurrentActivity.txt" %os.getcwd()), "w")
+    f.write("Activity: \n%s" %utils.get_current_activity())
     f.close()
+    print "Completed"
     sys.exit(0)

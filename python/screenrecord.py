@@ -1,0 +1,36 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+'''
+Created on 2015年1月26日
+
+@author: xuxu
+'''
+import os
+
+from scriptUtils import utils
+
+#需要Android4.4及4.4以上版本，运行脚本后可录制设备上的操作，默认使用手机分辨率，时间5min。手动按Enter结束录制。
+#录制结果存放于当前目录下的video目录下
+
+PATH = lambda p: os.path.abspath(p)
+
+def record():
+    utils.shell("screenrecord --time-limit 300 /data/local/tmp/video.mp4")
+    
+    input_key = raw_input("Please press the Enter key to  stop recording:\n")
+    if input_key == "":
+        utils.adb("kill-server")
+    
+    print "Get Video file..."
+    
+    path = PATH("%s/video" %os.getcwd())
+    if not os.path.isdir("%s/video" %PATH(os.getcwd())):
+        os.makedirs(path)
+    
+    utils.adb("pull /data/local/tmp/video.mp4 %s" %PATH("%s/video" %PATH(os.getcwd()))).wait()
+    utils.adb("pull /data/local/tmp/video.mp4 %s"  %PATH("%s/%s.mp4" %(path, utils.timestamp()))).wait()
+        
+if __name__ == "__main__":
+    record()
+    print "Completed"

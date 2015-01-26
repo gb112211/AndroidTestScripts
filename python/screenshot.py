@@ -1,23 +1,26 @@
 #!/usr/bin/env python
-#coding=utf-8
+# -*- coding: utf-8 -*-
+
+'''
+Created on 2015年1月26日
+
+@author: xuxu
+'''
 
 import os
-import time
 
-#截取设备上的屏幕，保存至当前目录下的screenshot目录
+from scriptUtils import utils
 
 PATH = lambda p: os.path.abspath(p)
 
 def screenshot():
-    path = PATH(os.getcwd() + "/screenshot")
-    timestamp = time.strftime('%Y-%m-%d-%H-%M-%S',time.localtime(time.time()))
-    os.popen("adb wait-for-device")
-    os.popen("adb shell screencap -p /data/local/tmp/tmp.png")
-    if not os.path.isdir(PATH(os.getcwd() + "/screenshot")):
+    path = PATH("%s/screenshot" %os.getcwd())
+    utils.shell("screencap -p /data/local/tmp/tmp.png").wait()
+    if not os.path.isdir("%s/screenshot" %PATH(os.getcwd())):
         os.makedirs(path)
-    os.popen("adb pull /data/local/tmp/tmp.png " + PATH(path + "/" + timestamp + ".png"))
-    os.popen("adb shell rm /data/local/tmp/tmp.png")
-    print "success"
+    utils.adb("pull /data/local/tmp/tmp.png %s" %PATH("%s/%s.png" %(path, utils.timestamp()))).wait()
+    utils.shell("rm /data/local/tmp/tmp.png")   
 
 if __name__ == "__main__":
     screenshot()
+    print "success"
