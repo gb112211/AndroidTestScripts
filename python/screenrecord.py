@@ -6,7 +6,10 @@ Created on 2015年1月26日
 
 @author: xuxu
 '''
+
 import os
+import string
+import sys
 
 from scriptUtils import utils
 
@@ -32,5 +35,10 @@ def record():
     utils.adb("pull /data/local/tmp/video.mp4 %s"  %PATH("%s/%s.mp4" %(path, utils.timestamp()))).wait()
         
 if __name__ == "__main__":
-    record()
-    print "Completed"
+    sdk = string.atoi(utils.shell("getprop ro.build.version.sdk").stdout.read())
+    if sdk < 19:
+        print "sdk version is %s, less than 19!"
+        sys.exit(0)
+    else:
+        record()
+        print "Completed"
