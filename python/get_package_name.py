@@ -18,7 +18,7 @@ PATH = lambda p: os.path.abspath(p)
 
 if __name__ == "__main__":
     f = open(PATH("%s/PackageName.txt" %os.getcwd()), "w")
-    f.write("Package: \n%s" %utils.get_current_package_name())
+    f.write("Package: \n%s\n" %utils.get_current_package_name())
     f.close()
     print "Completed"
     sys.exit(0)

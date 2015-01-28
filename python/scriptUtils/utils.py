@@ -43,7 +43,7 @@ def shell(args):
 
 #获取设备状态
 def get_state():
-    return adb("get-state").stdout.read().split("\r\n")[-2]
+    return os.popen("adb get-state").read().strip()
 
 #获取对应包名的pid
 def get_app_pid(pkg_name):   
@@ -94,6 +94,10 @@ def timestamp():
 # adb("start-server").wait()
 adb("wait-for-device")
 
+if get_state() != "device":
+    adb("kill-server").wait()
+    adb("start-server").wait()
+    
 if get_state() != "device":
     raise exception.SriptException("Device not run")
     
