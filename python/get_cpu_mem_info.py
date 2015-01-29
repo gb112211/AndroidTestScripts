@@ -19,7 +19,7 @@ PATH = lambda p: os.path.abspath(p)
 #打开待测应用，运行脚本，默认times为20次（可自己手动修改次数），获取该应用cpu、memory占用率的曲线图，图表保存至chart目录下
 
 #top次数
-times = 20
+times = 10
 
 #设备当前运行应用的包名
 pkg_name = utils.get_current_package_name()
@@ -32,22 +32,23 @@ def top():
     top_info = utils.shell("top -n %s | %s %s$" %(str(times), utils.find_util, pkg_name)).stdout.readlines()
 
     for info in top_info:
-        temp_list = del_space(info)
+        #temp_list = del_space(info)
+        temp_list = info.split()
         cpu.append(temp_list[2])
         mem.append(temp_list[6])
     
     return (cpu, mem)
 
 #去除top信息中的空格，便于获取cpu、mem的值        
-def del_space(str):
-    temp_list1 = str.split(" ")
-    temp_list2 = []
-    
-    for str in temp_list1:
-        if str != "":
-           temp_list2.append(str)
-           
-    return temp_list2
+#def del_space(str):
+#    temp_list1 = str.split(" ")
+#    temp_list2 = []
+#   
+#    for str in temp_list1:
+#        if str != "":
+#           temp_list2.append(str)
+#           
+#    return temp_list2
 
 #绘制线性图表，具体接口的用法查看ChartDirecto的帮助文档
 def line_chart():
