@@ -7,12 +7,12 @@ Android测试中常用到的脚本
 
 批量安装应用（支持以中文命名的apk）、批量卸载、截屏、录制视频、获取当前应用的apk文件、包名、Activity名等。
 
-###2015.01.29
+###2015年.1月.29日
 新增脚本get_cpu_mem_info.py,获取设备当前运行的应用的cpu、memory信息，默认top times取值为20次，可自己修改脚本中的该参数
 
 脚本运行需要安装pychartdir模块，安装方法请参考 [http://blog.csdn.net/gb112211/article/details/43272049](http://blog.csdn.net/gb112211/article/details/43272049 "python pychartdir模块的安装及使用")<br>
-直接运行脚本，会生成线性图标存放于chart目录下，图标类似于：<br>
-![image](https://github.com/gb112211/MyResources/tree/master/image/cpu_mem_info.png)
+直接运行脚本，会生成线性图标存放于chart目录下，图表类似于：<br>
+![image](https://github.com/gb112211/MyResources/tree/master/image/cpu_mem_info.png )
 
 
 ###2015年1月28日
