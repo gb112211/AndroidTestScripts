@@ -13,13 +13,13 @@ import sys
 
 from scriptUtils import utils
 
-#需要Android4.4及4.4以上版本，运行脚本后可录制设备上的操作，默认使用手机分辨率，时间5min。手动按Enter结束录制。
+#需要Android4.4及4.4以上版本，运行脚本后可录制设备上的操作，默认使用手机分辨率，时间3min。手动按Enter结束录制。
 #录制结果存放于当前目录下的video目录下
 
 PATH = lambda p: os.path.abspath(p)
 
 def record():
-    utils.shell("screenrecord --time-limit 300 /data/local/tmp/video.mp4")
+    utils.shell("screenrecord /data/local/tmp/video.mp4")
     
     input_key = raw_input("Please press the Enter key to  stop recording:\n")
     if input_key == "":
