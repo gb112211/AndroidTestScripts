@@ -15,7 +15,7 @@ Android测试中常用到的脚本
 
 脚本运行需要安装pychartdir模块，安装方法请参考 [http://blog.csdn.net/gb112211/article/details/43272049](http://blog.csdn.net/gb112211/article/details/43272049 "python pychartdir模块的安装及使用")<br>
 直接运行脚本，会生成线性图表存放于chart目录下，图表类似于：<br>
-![image](https://github.com/gb112211/MyResources/tree/master/image/cpu_mem_info.png "chart" )
+![image](https://github.com/gb112211/AndroidTestScripts/tree/master/image/cpu_mem_info.png "chart" )
 
 
 ###2015.01.28
