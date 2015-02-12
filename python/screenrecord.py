@@ -28,7 +28,7 @@ def record():
     print "Get Video file..."
     
     path = PATH("%s/video" %os.getcwd())
-    if not os.path.isdir("%s/video" %PATH(os.getcwd())):
+    if not os.path.isdir(path):
         os.makedirs(path)
     
     utils.adb("pull /data/local/tmp/video.mp4 %s"  %PATH("%s/%s.mp4" %(path, utils.timestamp()))).wait()

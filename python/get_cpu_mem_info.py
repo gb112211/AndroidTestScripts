@@ -100,7 +100,7 @@ def line_chart():
     layer.addDataSet(mem_data, 0x008800, "mem(M)")
     
     path = PATH("%s/chart" %os.getcwd())
-    if not os.path.isdir("%s/chart" %PATH(os.getcwd())):
+    if not os.path.isdir(path):
         os.makedirs(path)
     
     #图标保存至脚本当前目录的chart目录下

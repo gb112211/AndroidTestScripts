@@ -24,7 +24,7 @@ def get_match_apk(package_name, path):
 
 if __name__ == "__main__":
     path = PATH("%s/App" %os.getcwd())
-    if not os.path.isdir("%s/App" %PATH(os.getcwd())):
+    if not os.path.isdir(path):
         os.makedirs(path)
 
     get_match_apk(utils.get_current_package_name(), path)
