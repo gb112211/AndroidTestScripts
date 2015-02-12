@@ -19,8 +19,7 @@ from scriptUtils import utils
 PATH = lambda p: os.path.abspath(p)
 
 def record():
-    utils.shell("screenrecord /data/local/tmp/video.mp4")
-    
+    utils.shell("screenrecord /data/local/tmp/video.mp4")  
     input_key = raw_input("Please press the Enter key to  stop recording:\n")
     if input_key == "":
         utils.adb("kill-server")

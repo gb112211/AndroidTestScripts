@@ -75,7 +75,8 @@ def line_chart():
     elif 50 < times <= 90:
         xArea = times * 20
     else:
-        xArea = 1800       
+        xArea = 1800
+        
     c = XYChart(xArea, 800, 0xCCEEFF, 0x000000, 1)
     c.setPlotArea(60, 100, xArea - 100, 650)
     c.addLegend(50, 30, 0, "arialbd.ttf", 15).setBackground(Transparent)

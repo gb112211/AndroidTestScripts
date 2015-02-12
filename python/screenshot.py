@@ -20,6 +20,7 @@ def screenshot():
     utils.shell("screencap -p /data/local/tmp/tmp.png").wait()
     if not os.path.isdir(path):
         os.makedirs(path)
+        
     utils.adb("pull /data/local/tmp/tmp.png %s" %PATH("%s/%s.png" %(path, utils.timestamp()))).wait()
     utils.shell("rm /data/local/tmp/tmp.png")   
 
