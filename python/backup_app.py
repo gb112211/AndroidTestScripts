@@ -4,7 +4,7 @@
 '''
 Created on 2015年2月12日
 
-@author: Administrator
+@author: xuxu
 '''
 
 import os
