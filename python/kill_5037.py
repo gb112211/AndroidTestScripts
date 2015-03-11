@@ -13,6 +13,14 @@ import platform
 
 def win():
     pid = os.popen("netstat -ano | findstr 5037 | findstr  LISTENING").read().split()[-1]
+    
+    #下面的命令执行结果，可能因电脑而异，若获取adb.exe时出错，可自行调试！
+    #E:\>tasklist /FI "PID eq 10200"
+    #
+    #Image Name                     PID Session Name        Session#    Mem Usage
+    #========================= ======== ================ =========== ============
+    #adb.exe                      10200 Console                    1      6,152 K
+    
     process_name = os.popen('tasklist /FI "PID eq %s"' %pid).read().split()[-6]
     process_path = os.popen('wmic process where name="%s" get executablepath' %process_name).read().split()[-1]
     #分割路径，得到进程所在文件夹名
