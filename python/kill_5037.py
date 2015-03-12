@@ -22,11 +22,13 @@ def win():
     #adb.exe                      10200 Console                    1      6,152 K
     
     process_name = os.popen('tasklist /FI "PID eq %s"' %pid).read().split()[-6]
-    process_path = os.popen('wmic process where name="%s" get executablepath' %process_name).read().split()[-1]
+    process_path = os.popen('wmic process where name="%s" get executablepath' %process_name).read().split("\r\n")[1]
+    
     #分割路径，得到进程所在文件夹名
     name_list = process_path.split("\\")
     del name_list[-1]
     directory = "\\".join(name_list)
+    
     #打开进程所在文件夹
     os.system("explorer.exe %s" %directory)
     #杀死该进程
