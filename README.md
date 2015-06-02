@@ -8,7 +8,7 @@ Android测试中常用到的脚本
 批量安装应用（支持以中文命名的 apk）、批量卸载、截屏、录制视频、获取当前应用的 apk 文件、包名、Activity 名等。<br>
 
 ###2015.06.02
-增加 `get_app_crash_log.py`  与 `getAppCrash.sh`, 应用发生 crash ，未及时从 logcat 获取到有效 log 时，可通过该脚本获取 log
+增加 `get_app_crash_log.py`  与 `getAppCrashLog.sh`, 应用发生 crash ，未及时从 logcat 获取到有效 log 时，可通过该脚本获取 log
 
 ###2015.05.30
 增加 `get_app_permission.py`，获取设备当前应用的权限详情，windows 下会将结果写入 `permission.txt` 文件中，其他系统打印在控制台：
