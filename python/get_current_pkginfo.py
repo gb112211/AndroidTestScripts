@@ -1,3 +1,4 @@
+#!/bin/env python
 # -*- coding: utf-8 -*-
 
 '''
@@ -14,6 +15,7 @@ from scriptUtils import utils
 
 #获取设备上当前应用的包信息，结果存放于当前目录下的PackageInfo.txt中
 
+PATH = lambda p: os.path.abspath(p)
 tempFile = tempfile.gettempdir()
 
 def get_aapt():
@@ -22,6 +24,8 @@ def get_aapt():
         for path, subdir, files in os.walk(rootDir):
             if "aapt.exe" in files:
                 return os.path.join(path, "aapt.exe")
+            elif "aapt" in files:
+                return os.path.join(path, "aapt")
     else:
         return "ANDROID_HOME not exist"
 
@@ -30,11 +34,13 @@ def get_match_apk(package_name):
     for packages in utils.shell("pm list packages -f %s" %package_name).stdout.readlines():
         list.append(packages.split(":")[-1].split("=")[0])
     apk_name = list[0].split("/")[-1]
+
     utils.adb("pull %s %s" %(list[0], tempFile)).wait()
 
-    return "%s\\%s" %(tempFile, apk_name)
+    return PATH("%s/%s" %(tempFile, apk_name))
 
 if __name__ == "__main__":
-    os.popen("%s dump badging %s > PackageInfo.txt" %(get_aapt(), utils.get_current_package_name()))
-    os.popen("del %s\\*.apk" %tempFile)
+    package_name = utils.get_current_package_name()
+    os.popen("%s dump badging %s > PackageInfo.txt" %(get_aapt(), get_match_apk(package_name)))
+    # os.popen("del %s\\*.apk" %tempFile)
     print "Completed"
