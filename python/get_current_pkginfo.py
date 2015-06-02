@@ -9,9 +9,9 @@ Created on 2015年1月26日
 
 import os
 import tempfile
-import re
 
 from scriptUtils import utils
+from scriptUtils.exception import SriptException
 
 #获取设备上当前应用的包信息，结果存放于当前目录下的PackageInfo.txt中
 
@@ -27,7 +27,7 @@ def get_aapt():
             elif "aapt" in files:
                 return os.path.join(path, "aapt")
     else:
-        return "ANDROID_HOME not exist"
+        raise SriptException("ANDROID_HOME not exist")
 
 def get_match_apk(package_name):
     list = []
