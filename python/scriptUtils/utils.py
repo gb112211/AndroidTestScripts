@@ -49,8 +49,8 @@ def get_state():
 def get_app_pid(pkg_name):   
     if system is "Windows":
         string = shell("ps | findstr %s$" %pkg_name).stdout.read()
-        
-    string = shell("ps | grep -w %s" %pkg_name).stdout.read()
+    else:
+        string = shell("ps | grep -w %s" %pkg_name).stdout.read()
 
     if string == '':
         return "the process doesn't exist."
