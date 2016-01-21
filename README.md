@@ -7,6 +7,22 @@ Android测试中常用到的脚本
 
 批量安装应用（支持以中文命名的 apk）、批量卸载、截屏、录制视频、获取当前应用的 apk 文件、包名、Activity 名等。<br>
 
+###2016.01.21
+增加 `logcat.py`，windows 中在 cmd 里面运行 logcat 命令，会给输出的日志内容根据优先级添加颜色。使用前提是已配置 adb 及 python 的环境变量，在 cmd 里面可以直接运行 adb 命令和python 脚本。
+用法：
+将`logcat.py` 配置到环境变量里面，使得可以在 cmd 中可以直接执行 logcat 命令。参数与 `adb logcat` 的一样。例如：
+```
+logcat -v time
+```
+无颜色时截图：
+![logcat1](image/logcat1.png)
+
+logcat 执行后：
+![logcat2](image/logcat2.png)
+
+当要使用重定向时，请使用 `adb logcat`.
+
+
 ###2015.06.02
 增加 `get_app_crash_log.py`  与 `getAppCrashLog.sh`, 应用发生 crash ，未及时从 logcat 获取到有效 log 时，可通过该脚本获取 log
 
