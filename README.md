@@ -7,6 +7,21 @@ Android测试中常用到的脚本
 
 批量安装应用（支持以中文命名的 apk）、批量卸载、截屏、录制视频、获取当前应用的 apk 文件、包名、Activity 名等。<br>
 
+###2016.04.22
+增加 `fps.py`,获取测试界面的 `fps`、`jankniess`。
+使用方法：安装提示输入参数，测试过程中操作界面，最终数据结果存放于 `fps_data` 目录下，csv 格式。
+如有错误，请指出！
+demo：
+测试界面
+![tuiku](image/tuiku.png)
+
+cmd 界面：
+![fps_cmd](image/fps_cmd.png)
+
+最终结果：
+![fps_chart](image/fps_chart.png)
+
+
 ###2016.01.21
 增加 `logcat.py`，windows 中在 cmd 里面运行 logcat 命令，会给输出的日志内容根据优先级添加颜色。使用前提是已配置 adb 及 python 的环境变量，在 cmd 里面可以直接运行 adb 命令和python 脚本。
 用法：
