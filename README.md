@@ -9,9 +9,12 @@ Android测试中常用到的脚本
 
 ###2016.04.22
 增加 `fps.py`,获取测试界面的 `fps`、`jankniess`。
+
 使用方法：安装提示输入参数，测试过程中操作界面，最终数据结果存放于 `fps_data` 目录下，csv 格式。
 如有错误，请指出！
-demo：
+
+####demo：
+
 测试界面
 ![tuiku](image/tuiku.png)
 
