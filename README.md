@@ -15,13 +15,16 @@ Android测试中常用到的脚本
 
 ####demo：
 
-测试界面
+测试界面：
+
 ![tuiku](image/tuiku.png)
 
 cmd 界面：
+
 ![fps_cmd](image/fps_cmd.png)
 
 最终结果：
+
 ![fps_chart](image/fps_chart.png)
 
 
