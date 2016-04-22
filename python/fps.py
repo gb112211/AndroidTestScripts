@@ -152,7 +152,6 @@ def write_csv(*list):
         os.makedirs(path)
     f = open(PATH("%s/fps-%s.csv" %(path, utils.timestamp())), "w")
     times = list[0]
-    print times
     fps = list[1]
     jankniess = list[2]
 
