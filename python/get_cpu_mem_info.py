@@ -104,7 +104,7 @@ def line_chart():
     if not os.path.isdir(path):
         os.makedirs(path)
     
-    #图标保存至脚本当前目录的chart目录下
+    #图片保存至脚本当前目录的chart目录下
     c.makeChart(PATH("%s/%s.png" %(path, utils.timestamp())))
     
 if __name__ == "__main__":

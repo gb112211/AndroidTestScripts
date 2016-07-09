@@ -18,7 +18,8 @@ PATH = lambda p: os.path.abspath(p)
 def get_match_apk(package_name, path):
     list = []
     for packages in utils.shell("pm list packages -f %s" %package_name).stdout.readlines():
-        list.append(packages.split(":")[-1].split("=")[0])
+        if packages.split(":")[0] == "package":
+            list.append(packages.split(":")[-1].split("=")[0])
 
     utils.adb("pull %s %s" %(list[0], path)).wait()
 

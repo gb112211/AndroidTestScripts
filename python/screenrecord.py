@@ -10,6 +10,7 @@ Created on 2015年1月26日
 import os
 import string
 import sys
+import time
 
 from scriptUtils import utils
 
@@ -20,11 +21,13 @@ PATH = lambda p: os.path.abspath(p)
 
 def record():
     utils.shell("screenrecord /data/local/tmp/video.mp4")  
-    input_key = raw_input("Please press the Enter key to  stop recording:\n")
+    input_key = raw_input("Please press the Enter key to stop recording:\n")
     if input_key == "":
         utils.adb("kill-server")
     
     print "Get Video file..."
+    utils.adb("start-server")
+    time.sleep(1.5)
     
     path = PATH("%s/video" %os.getcwd())
     if not os.path.isdir(path):
