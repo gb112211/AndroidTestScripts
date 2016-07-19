@@ -7,6 +7,11 @@ Android测试中常用到的脚本
 
 批量安装应用（支持以中文命名的 apk）、批量卸载、截屏、录制视频、获取当前应用的 apk 文件、包名、Activity 名等。<br>
 
+
+###2016.7.19
+增加部分python脚本对多设备的支持：
+
+![device_id](image/device_id.png)
 ###2016.04.22
 增加 `fps.py`,获取测试界面的 `fps`、`jankniess`。
 
