@@ -147,7 +147,7 @@ def get_focused_package_and_activity():
     #out = shell("dumpsys window w | %s \/ | %s name=" %(find_util, find_util)).stdout.read()
 
     #return pattern.findall(out)[0]
-    return shell("dumpsys activity | findstr mFocusedActivity").stdout.read().split()[-1][:-1]
+    return shell("dumpsys activity | %s mFocusedActivity" %find_util).stdout.read().split()[-1][:-1]
 
 #获取当前应用的包名
 def get_current_package_name():
