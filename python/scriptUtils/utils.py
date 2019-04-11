@@ -144,12 +144,14 @@ def kill_process(pkg_name):
 #获取设备上当前应用的包名与activity
 def get_focused_package_and_activity():
     pattern = re.compile(r"[a-zA-Z0-9\.]+/.[a-zA-Z0-9\.]+")
-    #out = shell("dumpsys window w | %s \/ | %s name=" %(find_util, find_util)).stdout.read()
-
-    #return pattern.findall(out)[0]
-    str = shell("dumpsys activity | %s mFocusedActivity" %find_util).stdout.read()
-    #return shell("dumpsys activity | %s mFocusedActivity" %find_util).stdout.read().split()[-1][:-1]
-    return pattern.findall(str)[0]
+    tmp = shell("dumpsys activity | %s mFocusedActivity" %find_util).stdout.read()
+    name = ""
+    try:
+        name = pattern.findall(tmp)[0]
+    except:
+        tmp = shell("dumpsys window w | %s \/ | %s name=" %(find_util, find_util)).stdout.read()
+        name = pattern.findall(tmp)[0]
+    return name
 
 #获取当前应用的包名
 def get_current_package_name():
