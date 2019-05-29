@@ -7,6 +7,11 @@ Android测试中常用到的脚本
 
 批量安装应用（支持以中文命名的 apk）、批量卸载、截屏、录制视频、获取当前应用的 apk 文件、包名、Activity 名等。<br>
 
+### 2019.05.29
+多设备的时候列表显示device ID，修改为显示设备model名
+
+![device_id](image/device_name_list.png)
+
 ### 2018.05.01
 修改 `screenrecord.py` ，原有脚本有时候会出现录制完的视频在 pull 到本地的时候卡死。修改后的脚本需要输入录制时间。
 
