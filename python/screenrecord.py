@@ -33,7 +33,8 @@ def record():
     else:
         print "Please set again!"
         record()
-        
+
+
 if __name__ == "__main__":
     sdk = string.atoi(utils.shell("getprop ro.build.version.sdk").stdout.read())
     if sdk < 19:
@@ -48,5 +49,5 @@ if __name__ == "__main__":
         if not os.path.isdir(path):
             os.makedirs(path)
 
-        os.popen("adb pull /data/local/tmp/video.mp4 %s"  %PATH("%s/%s.mp4" %(path, utils.timestamp())))
+        utils.adb("pull /data/local/tmp/video.mp4 %s"  %PATH("%s/%s.mp4" %(path, utils.timestamp())))
         print "Completed"
