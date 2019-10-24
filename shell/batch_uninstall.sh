@@ -1,6 +1,6 @@
 #!/bin/sh
 
-adb shell wait-for-device
+adb wait-for-device
 echo start remove...
 
 for package in `adb shell pm list package -3 | cut -d : -f 2 | tr -d "\r"`
